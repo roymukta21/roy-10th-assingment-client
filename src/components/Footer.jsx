@@ -1,5 +1,5 @@
-import React from "react";
 import { ArrowUp } from "lucide-react";
+
 
 export default function Footer() {
   const scrollToTop = () => {
