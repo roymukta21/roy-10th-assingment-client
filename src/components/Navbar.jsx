@@ -1,6 +1,12 @@
+// import { use } from "react";
+// import { NavLink } from "react-router";
+// import { AuthContext } from "../context/AuthContext";
+
 import { use } from "react";
-import AuthContext from "../context/AuthContext";
 import { NavLink } from "react-router";
+import { AuthContext } from "../context/AuthContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase.init.js/firebase.init";
 
 
 const Navbar = () => {
@@ -56,7 +62,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {user ? (
-          <a onClick={() => singO(auth)} className="btn">
+          <a onClick={() => signOut(auth)} className="btn">
             SignOut
           </a>
         ) : (
