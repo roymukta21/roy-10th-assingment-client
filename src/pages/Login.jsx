@@ -4,7 +4,7 @@ const Login = () => {
   return (
    <div className="flex justify-center mt-10">
   <fieldset className="fieldset bg-base-200 border border-base-300 rounded-lg w-80 p-6">
-    <legend className="font-semibold text-2xl px-2">
+    <legend className="fieldset-legend text-secondary font-semibold text-2xl">
       Login
     </legend>
 
@@ -18,7 +18,7 @@ const Login = () => {
       <input type="password" name="password" className="input w-full" placeholder="Password" />
     </div>
 
-    <button type="submit" className="btn btn-neutral mt-6 w-full" to="/login">
+    <button type="submit" className="btn btn-neutral mt-6 w-full text-secondary" to="/login">
       Login
     </button>
   </fieldset>

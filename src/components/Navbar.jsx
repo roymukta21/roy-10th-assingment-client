@@ -1,7 +1,3 @@
-// import { use } from "react";
-// import { NavLink } from "react-router";
-// import { AuthContext } from "../context/AuthContext";
-
 import { use } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
@@ -28,7 +24,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm text-primary">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -55,7 +51,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">SmartDeals</a>
+        <a className="btn btn-ghost text-xl"> <img className="h-10 w-10" src="/public/freepik-hand-drawn-linear-known-academy-logo-202511081639166U46.png" alt="" /> Study Mate</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
