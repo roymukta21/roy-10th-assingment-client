@@ -51,7 +51,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl"> <img className="h-10 w-10" src="/public/freepik-hand-drawn-linear-known-academy-logo-202511081639166U46.png" alt="" /> Study Mate</a>
+        <a className="btn btn-ghost text-xl"> <img className="h-10 w-10" src="/freepik-hand-drawn-linear-known-academy-logo-202511081639166U46.png" alt="" /> Study Mate</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>

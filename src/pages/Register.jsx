@@ -17,7 +17,7 @@ const Register = () => {
 
 
   return (
-    <div className="card bg-base-100 mx-auto w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="card bg-base-100 mx-auto w-full max-w-sm shrink-0 shadow-2xl justify-center items-center">
       <h1 className="text-5xl font-bold">Register now!</h1>
       <div className="card-body">
         <fieldset className="fieldset">
