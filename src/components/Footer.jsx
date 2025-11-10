@@ -2,7 +2,6 @@ import { ArrowUp } from "lucide-react";
 import { Link } from "react-router";
 import { FaFacebook, FaTwitter, FaInstagram, FaEnvelope } from "react-icons/fa";
 
-
 export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -13,16 +12,18 @@ export default function Footer() {
       {/* Container */}
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center justify-center pt-16 pb-12 px-4 text-primary space-y-5 sm:space-y-7">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 text-xl font-semibold"><div className="flex items-center space-x-2">
-          <img
-            className="h-8 sm:h-10 w-auto"
-            src="/freepik-hand-drawn-linear-known-academy-logo-202511081639166U46.png"
-            alt="StudyMate Logo"
-          />
-          <h1 className="text-xl sm:text-2xl font-semibold">
-            Study<span className="font-light">Mate</span>
-          </h1>
-        </div></Link>
+        <Link to="/" className="flex items-center gap-2 text-xl font-semibold">
+          <div className="flex items-center space-x-2">
+            <img
+              className="h-8 sm:h-10 w-auto"
+              src="/freepik-hand-drawn-linear-known-academy-logo-202511081639166U46.png"
+              alt="StudyMate Logo"
+            />
+            <h1 className="text-xl sm:text-2xl font-semibold">
+              Study<span className="font-light">Mate</span>
+            </h1>
+          </div>
+        </Link>
 
         {/* How it Works */}
         <div className="flex justify-center text-base sm:text-lg text-secondary hover:text-primary">
@@ -76,9 +77,13 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <p className="text-gray-600 text-xs sm:text-sm mt-8">
-          2025 © Knowledge Collective
-        </p>
+        <div className="flex mt-6 text-center text-gray-400 justify-center items-center gap-2">
+          <span>&copy; {new Date().getFullYear()}</span>
+          <h1 className="font-semibold">
+            Study<span className="font-light">Mate</span>.
+          </h1>
+          <span>All rights reserved.</span>
+        </div>
       </div>
 
       {/* Go to Top Button (hidden on small, visible on md+) */}

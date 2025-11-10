@@ -1,12 +1,17 @@
-import { use } from "react";
-import { Link, NavLink } from "react-router";
+// import { useContext } from "react";
+// import { Link, NavLink } from "react-router-dom";
+// import { AuthContext } from "../context/AuthContext";
+// import { signOut } from "firebase/auth";
+// import { auth } from "../firebase/firebase.init"; // ✅ path fix
+
+import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { Link, NavLink } from "react-router";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase.init.js/firebase.init";
 
-
 const Navbar = () => {
-  const { user } = use(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const links = (
     <>
@@ -16,13 +21,19 @@ const Navbar = () => {
       <li>
         <NavLink to="/allProducts">All Products</NavLink>
       </li>
-      {
-        user && <>
-         <NavLink to="/">My Products</NavLink> <NavLink to="/allProducts">My Bids</NavLink>
+      {user && (
+        <>
+          <li>
+            <NavLink to="/my-products">My Products</NavLink>
+          </li>
+          <li>
+            <NavLink to="/my-bids">My Bids</NavLink>
+          </li>
         </>
-      }
+      )}
     </>
   );
+
   return (
     <div className="navbar shadow-sm text-primary bg-[#baf381]">
       <div className="navbar-start">
@@ -35,41 +46,62 @@ const Navbar = () => {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              {" "}
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
+              />
             </svg>
           </div>
           <ul
-            tabIndex="-1"
+            tabIndex={-1}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             {links}
           </ul>
         </div>
-         <Link to="/" className="flex items-center gap-2 text-xl font-semibold"><div className="flex items-center space-x-2">
+
+        <Link to="/" className="flex items-center gap-2 text-xl font-semibold">
           <img
-            className="h-8 sm:h-10 w-auto"
+            className="h-10 w-auto"
             src="/freepik-hand-drawn-linear-known-academy-logo-202511081639166U46.png"
             alt="StudyMate Logo"
           />
-          <h1 className="text-xl sm:text-2xl font-semibold">
+          <h1 className="text-xl font-semibold">
             Study<span className="font-light">Mate</span>
           </h1>
-        </div></Link>
+        </Link>
       </div>
+
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
+
+      <div className="navbar-end flex items-center gap-3">
+
         {user ? (
-          <a onClick={() => signOut(auth)} className="btn">
-            SignOut
-          </a>
+          <>
+            {/* Avatar */}
+            <div className="relative group cursor-pointer">
+              <img
+                src={user.photoURL || "/avatar-placeholder.png"}
+                alt="avatar"
+                className="w-10 h-10 rounded-full object-cover border border-gray-300"
+                title={user.displayName || user.email}
+              />
+
+              {/* Hover tooltip */}
+              <div className="absolute left-1/2 -translate-x-1/2 mt-1 hidden group-hover:block bg-white border text-sm px-2 py-1 rounded shadow">
+                {user.displayName || user.email}
+              </div>
+            </div>
+
+            {/* Logout */}
+            <button
+              onClick={() => signOut(auth)}
+              className="border border-primary text-primary hover:bg-primary hover:text-white px-3 py-1 rounded transition"
+            >
+              Logout
+            </button>
+          </>
         ) : (
           <>
             <NavLink to="/login" className="btn">

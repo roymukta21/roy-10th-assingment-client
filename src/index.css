@@ -8,3 +8,7 @@
   --color-secondary: #38BDF8; /* Sky Blue */
 };
 @custom-variant dark (&:where(.dark, .dark *));
+
+.btn {
+  @apply bg-white text-primary border border-primary rounded-md px-4 py-2 hover:bg-secondary hover:text-white transition;
+}
