@@ -11,6 +11,7 @@ import Navbar from './components/Navbar.jsx';
 import AuthProvider from './context/AuthProvider.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
+import ThemeToggle from './components/ThemeToggle.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,11 @@ const router = createBrowserRouter([
       {
         path:"Register",
         Component: Register
-      }
+      },
+      // {
+      //   path: "ThemeToggle",
+      //   Component: ThemeToggle
+      // }
 
     ]
   },

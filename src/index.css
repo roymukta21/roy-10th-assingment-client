@@ -3,8 +3,8 @@
 
 
 @plugin "daisyui/theme" {
-  name: "light";
   default: true;
   --color-primary: #1E3A8A; /* Navy Blue */
   --color-secondary: #38BDF8; /* Sky Blue */
-}
+};
+@custom-variant dark (&:where(.dark, .dark *));

@@ -1,5 +1,7 @@
 import { ArrowUp } from "lucide-react";
 import { Link } from "react-router";
+import { FaFacebook, FaTwitter, FaInstagram, FaEnvelope } from "react-icons/fa";
+
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -7,7 +9,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#baf381] text-center mt-24 sm:mt-28 rounded-t-[6rem] sm:rounded-t-[8rem] w-full">
+    <footer className="relative bg-[#baf381] text-center  rounded-t-[6rem] sm:rounded-t-[8rem] w-full">
       {/* Container */}
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center justify-center pt-16 pb-12 px-4 text-primary space-y-5 sm:space-y-7">
         {/* Logo */}
@@ -31,23 +33,35 @@ export default function Footer() {
 
         {/* Main Links — stacked on mobile */}
         <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 sm:gap-6 text-base sm:text-lg text-secondary">
-          <a href="#" className="hover:text-primary transition-colors">
-            Focus Room
+          <a
+            href="https://www.facebook.com"
+            className="hover:text-blue-400 transition"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebook size={24} />
           </a>
-          <a href="#" className="hover:text-primary  transition-colors">
-            Community
+          <a
+            href="https://www.x.com"
+            className="hover:text-blue-300 transition"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaTwitter size={24} />
           </a>
-          <a href="#" className="hover:text-primary transition-colors">
-            Rules
+          <a
+            href="https://www.instagram.com"
+            className="hover:text-pink-500 transition"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram size={24} />
           </a>
-          <a href="#" className="hover:text-primary transition-colors">
-            Blog
-          </a>
-          <a href="#" className="hover:text-primary transition-colors">
-            Contact Us
-          </a>
-          <a href="#" className="hover:text-primary transition-colors">
-            Mobile app
+          <a
+            href="https://mail.google.com/"
+            className="hover:text-yellow-400 transition"
+          >
+            <FaEnvelope size={24} />
           </a>
         </div>
 
