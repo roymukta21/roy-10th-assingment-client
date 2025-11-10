@@ -24,7 +24,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 shadow-sm text-primary">
+    <div className="navbar shadow-sm text-primary bg-[#baf381]">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -51,7 +51,16 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-         <Link to="/" className="flex items-center gap-2 text-xl font-semibold"><img className="h-10 w-10" src="/freepik-hand-drawn-linear-known-academy-logo-202511081639166U46.png" alt="" /> Study Mate</Link>
+         <Link to="/" className="flex items-center gap-2 text-xl font-semibold"><div className="flex items-center space-x-2">
+          <img
+            className="h-8 sm:h-10 w-auto"
+            src="/freepik-hand-drawn-linear-known-academy-logo-202511081639166U46.png"
+            alt="StudyMate Logo"
+          />
+          <h1 className="text-xl sm:text-2xl font-semibold">
+            Study<span className="font-light">Mate</span>
+          </h1>
+        </div></Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
