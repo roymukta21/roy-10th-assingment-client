@@ -17,7 +17,7 @@ const Register = () => {
 
 
   return (
-    <div className="card bg-base-100 mx-auto w-full max-w-sm shrink-0 shadow-2xl justify-center items-center">
+    <div className="card bg-base-100 mx-auto w-full max-w-sm shrink-0 shadow-2xl justify-center items-center mt-10">
       <h1 className="text-5xl font-bold">Register now!</h1>
       <div className="card-body">
         <fieldset className="fieldset">
@@ -25,9 +25,7 @@ const Register = () => {
           <input type="email" className="input" placeholder="Email" />
           <label className="label">Password</label>
           <input type="password" className="input" placeholder="Password" />
-          <div>
-            <a className="link link-hover">Forgot password?</a>
-          </div>
+          
           <button type="submit" className="btn btn-neutral mt-4 ">Register</button>
           <br />
           <p className="text-center text-xl">or</p>

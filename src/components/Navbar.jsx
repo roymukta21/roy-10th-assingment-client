@@ -1,5 +1,5 @@
 import { use } from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase.init.js/firebase.init";
@@ -51,7 +51,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl"> <img className="h-10 w-10" src="/freepik-hand-drawn-linear-known-academy-logo-202511081639166U46.png" alt="" /> Study Mate</a>
+         <Link to="/" className="flex items-center gap-2 text-xl font-semibold"><img className="h-10 w-10" src="/freepik-hand-drawn-linear-known-academy-logo-202511081639166U46.png" alt="" /> Study Mate</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
