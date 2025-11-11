@@ -63,7 +63,7 @@ export default function Signup() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100">
       <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center mb-6 text-gray-500">
+        <h2 className="text-2xl font-bold text-center mb-6 text-primary">
           Create an Account
         </h2>
 
@@ -73,21 +73,21 @@ export default function Signup() {
             name="name"
             placeholder="Full Name"
             required
-            className="input border-accent w-full bg-white  text-black"
+            className="input border-accent w-full bg-white  text-secondary"
           />
           <input
             type="text"
             name="photo"
             placeholder="Photo URL"
             required
-            className="input border-accent w-full bg-white  text-black"
+            className="input border-accent w-full bg-white  text-secondary"
           />
           <input
             type="email"
             name="email"
             placeholder="Email"
             required
-            className="input border-accent w-full bg-white  text-black"
+            className="input border-accent w-full bg-white  text-secondary"
           />
           <div className="relative">
           <input
@@ -97,12 +97,12 @@ export default function Signup() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2 text-secondary"
           />
           <button
             type="button"
             onClick={() => setShowPass((v) => !v)}
-            className="absolute right-2 top-2 text-sm"
+            className="absolute right-2 top-2 text-sm text-primary"
           >
             {showPass ? "Hide" : "Show"}
           </button>
@@ -122,7 +122,7 @@ export default function Signup() {
 
         <p className="mt-4 text-center text-sm text-gray-600">
           Already have an account?{" "}
-          <Link to="/auth/login" className="text-blue-600 hover:underline">
+          <Link to="/login" className="text-blue-600 hover:underline">
             Login
           </Link>
         </p>

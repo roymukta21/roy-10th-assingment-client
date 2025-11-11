@@ -1,9 +1,3 @@
-// import { useContext } from "react";
-// import { Link, NavLink } from "react-router-dom";
-// import { AuthContext } from "../context/AuthContext";
-// import { signOut } from "firebase/auth";
-// import { auth } from "../firebase/firebase.init"; // ✅ path fix
-
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Link, NavLink } from "react-router";
@@ -12,6 +6,17 @@ import { auth } from "../firebase.init.js/firebase.init";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
+
+  // ✅ Theme Handler
+  const handleTheme = (isDark) => {
+    if (isDark) {
+      document.documentElement.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
+    }
+  };
 
   const links = (
     <>
@@ -27,7 +32,7 @@ const Navbar = () => {
             <NavLink to="/CreatePartnerProfile">Create Partner Profile</NavLink>
           </li>
           <li>
-            <NavLink to="/MyConnections">My Connection</NavLink>
+            <NavLink to="/MyConnection">My Connection</NavLink>
           </li>
         </>
       )}
@@ -53,7 +58,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={-1}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
           >
             {links}
           </ul>
@@ -77,6 +82,14 @@ const Navbar = () => {
 
       <div className="navbar-end flex items-center gap-3">
 
+        {/* ✅ THEME TOGGLE BUTTON */}
+        <input
+          onChange={(e) => handleTheme(e.target.checked)}
+          type="checkbox"
+          defaultChecked={localStorage.getItem("theme") === "dark"}
+          className="toggle"
+        />
+
         {user ? (
           <>
             {/* Avatar */}
@@ -87,8 +100,6 @@ const Navbar = () => {
                 className="w-10 h-10 rounded-full object-cover border border-gray-300"
                 title={user.displayName || user.email}
               />
-
-              {/* Hover tooltip */}
               <div className="absolute left-1/2 -translate-x-1/2 mt-1 hidden group-hover:block bg-white border text-sm px-2 py-1 rounded shadow">
                 {user.displayName || user.email}
               </div>

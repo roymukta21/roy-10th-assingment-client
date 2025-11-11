@@ -80,17 +80,9 @@ export default function Login() {
 
         <div className="text-center">Or</div>
 
-        <button
-          type="button"
-          onClick={handleGoogle}
-          className=" flex items-center justify-center-safe w-full border py-2 rounded"
-        >
-        Continue with Google
-        </button>
-
         <p className="text-sm">
           Don't have an account?{" "}
-          <Link to="/auth/signup" className="text-blue-600">
+          <Link to="/register" className="text-blue-600">
             Signup
           </Link>
         </p>

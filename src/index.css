@@ -1,13 +1,38 @@
-@import "tailwindcss";
-@plugin "daisyui";
-
-
+/* @import "tailwindcss";
+@plugin "daisyui" {
+  theme: light
+}
 @plugin "daisyui/theme" {
+  name: "light";
   default: true;
-  --color-primary: #1E3A8A; /* Navy Blue */
-  --color-secondary: #38BDF8; /* Sky Blue */
-};
-@custom-variant dark (&:where(.dark, .dark *));
+  --color-primary: #000080;
+  --color-secondary: #38BDF8;
+} */
+/* @plugin "daisyui" {
+   themes: light --default, dark --prefersdark;
+   --color-primary: #000080;
+  --color-secondary: #38BDF8;
+ } */
+
+ @import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+
+/* Light theme colors */
+:root {
+  --color-primary: #000080;
+  --color-secondary: #38BDF8;
+}
+
+/* Dark theme colors */
+[data-theme="dark"] {
+  --color-primary: #000080;
+  --color-secondary: #38BDF8;
+}
+
+
+@custom-variant dark (&:where([data-theme=dark], .[data-theme=dark ]*));
 
 .btn {
   @apply bg-white text-primary border border-primary rounded-md px-4 py-2 hover:bg-secondary hover:text-white transition;

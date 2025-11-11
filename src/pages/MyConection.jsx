@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MyConnections = () => {
+const MyConection = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const MyConnections = () => {
     );
 };
 
-export default MyConnections;
+export default MyConection;

@@ -11,10 +11,11 @@ import Navbar from './components/Navbar.jsx';
 import AuthProvider from './context/AuthProvider.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
-import ThemeToggle from './components/ThemeToggle.jsx';
 import FindPartner from './pages/FindPartner.jsx';
 import CreatePartnerProfile from './pages/CreatePartnerProfile.jsx';
-import MyConnections from './pages/MyConnections.Jsx';
+import MyyConection from './pages/MyyConection.jsx';
+import MyConection from './pages/MyConection.jsx';
+
 
 
 
@@ -50,8 +51,8 @@ const router = createBrowserRouter([
         Component: CreatePartnerProfile
       },
       {
-        path:"MyConnections",
-        Component:MyConnections
+        path:"MyConnection",
+        Component:MyConection
       }
       // {
       //   path: "ThemeToggle",

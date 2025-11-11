@@ -1,5 +1,4 @@
 import React from "react";
-import ThemeToggle from "./ThemeToggle";
 
 const Carousel = () => {
   return (
@@ -8,7 +7,7 @@ const Carousel = () => {
       
       <div  className="carousel-item relative w-full">
         <div className="absolute top-4 right-4 z-50">
-        <ThemeToggle />
+      
       </div>
         <img
           src="/StudyMate.png"
