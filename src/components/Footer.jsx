@@ -25,12 +25,7 @@ export default function Footer() {
           </div>
         </Link>
 
-        {/* How it Works */}
-        <div className="flex justify-center text-base sm:text-lg text-secondary hover:text-primary">
-          <a href="#" className=" transition-colors">
-            How it works
-          </a>
-        </div>
+        
 
         {/* Main Links — stacked on mobile */}
         <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 sm:gap-6 text-base sm:text-lg text-secondary">

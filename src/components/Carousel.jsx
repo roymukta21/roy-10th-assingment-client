@@ -75,10 +75,10 @@ export default function Carousel() {
                     <button
                       onClick={() =>
                         s.cta === "Find Partners"
-                          ? navigate("/find-partners")
+                          ? navigate("/FindPartner")
                           : s.cta === "Create Profile"
-                          ? navigate("/create-profile")
-                          : navigate("/register")
+                          ? navigate("/register")
+                          : navigate("/Login")
                       }
                       className="btn btn-primary bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700"
                     >
