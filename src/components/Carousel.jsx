@@ -86,7 +86,7 @@ export default function Carousel() {
                     </button>
 
                     <button
-                      onClick={() => navigate("/find-partners")}
+                      onClick={() => navigate("/FindPartner")}
                       className="btn btn-ghost text-white border-white/30"
                     >
                       Explore

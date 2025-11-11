@@ -26,7 +26,7 @@ export default function TopStudyPartners() {
 
   return (
     <section className="container mx-auto px-6 mt-14">
-      <h2 className="text-center text-3xl md:text-4xl font-bold mb-10">
+      <h2 className="text-center text-3xl md:text-4xl font-bold mb-10 text-secondary">
         ⭐ Top Study Partners
       </h2>
 
