@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Link, NavLink } from "react-router";
 import { signOut } from "firebase/auth";
@@ -7,15 +7,16 @@ import { auth } from "../firebase.init.js/firebase.init";
 const Navbar = () => {
   const { user } = useContext(AuthContext);
 
+  const [theme,setTheme] = useState(localStorage.getItem('theme') || "light")
+  useEffect(() =>{
+     const html =document.querySelector('html')
+      html.setAttribute("data-theme", theme)
+      localStorage.setItem("theme", theme)
+  }, [theme])
+
   // ✅ Theme Handler
-  const handleTheme = (isDark) => {
-    if (isDark) {
-      document.documentElement.setAttribute("data-theme", "dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.setAttribute("data-theme", "light");
-      localStorage.setItem("theme", "light");
-    }
+  const handleTheme = (checked) => {
+   setTheme(checked? "dark": "light")
   };
 
   const links = (
