@@ -45,7 +45,7 @@ export default function MyConnection() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-6xl mx-auto p-6 h-screen">
       <h2 className="text-3xl font-bold text-center my-6 text-primary">My Connections</h2>
 
       {connections.length === 0 ? (
