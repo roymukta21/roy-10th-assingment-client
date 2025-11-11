@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import { useNavigate, useParams } from "react-router";
+import useAuth from "../hook/useAuth";
 
 export default function PartnerDetails() {
   const { id } = useParams();

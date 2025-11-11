@@ -13,8 +13,8 @@ import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import FindPartner from './pages/FindPartner.jsx';
 import CreatePartnerProfile from './pages/CreatePartnerProfile.jsx';
-import MyyConection from './pages/MyyConection.jsx';
-import MyConection from './pages/MyConection.jsx';
+import MyConnection from './pages/MyConnection.jsx';
+
 
 
 
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       },
       {
         path:"MyConnection",
-        Component:MyConection
+        Component: MyConnection
       }
       // {
       //   path: "ThemeToggle",

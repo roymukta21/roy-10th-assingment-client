@@ -1,6 +1,6 @@
 
 
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
 
 import { Link, useLocation, useNavigate } from "react-router";
 import { auth } from "../firebase.init.js/firebase.init";
@@ -30,19 +30,19 @@ export default function Login() {
     }
   }
 
-  async function handleGoogle() {
-    try {
-      await signInWithPopup(auth, GoogleAuthProvider);
-      toast.success("Logged in with Google");
-      navigate(from, { replace: true });
-    } catch (err) {
-      toast.error(err.message);
-    }
-  }
+  // async function handleGoogle() {
+  //   try {
+  //     await signInWithPopup(auth, GoogleAuthProvider);
+  //     toast.success("Logged in with Google");
+  //     navigate(from, { replace: true });
+  //   } catch (err) {
+  //     toast.error(err.message);
+  //   }
+  // }
 
   return (
-    <div className="container mx-auto px-4 py-12 max-w-md">
-      <h2 className="text-2xl font-semibold mb-4">Login</h2>
+    <div className="bg-red container mx-auto px-4 py-12 max-w-md ">
+      <h2 className="text-2xl font-semibold mb-4 ">Login</h2>
       <form onSubmit={handleEmailLogin} className="space-y-3">
         <input
           required

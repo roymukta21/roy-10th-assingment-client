@@ -22,12 +22,12 @@
 /* Light theme colors */
 :root {
   --color-primary: #000080;
-  --color-secondary: #38BDF8;
+  --color-secondary: #1fafec;
 }
 
 /* Dark theme colors */
 [data-theme="dark"] {
-  --color-primary: #000080;
+  --color-primary: #5e5eee;
   --color-secondary: #38BDF8;
 }
 

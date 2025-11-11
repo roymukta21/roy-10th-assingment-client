@@ -41,7 +41,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar shadow-sm text-primary bg-[#baf381]">
-      <div className="navbar-start">
+      <div className="navbar-start gap-2">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -98,10 +98,10 @@ const Navbar = () => {
                 src={user.photoURL || "/avatar-placeholder.png"}
                 alt="avatar"
                 className="w-10 h-10 rounded-full object-cover border border-gray-300"
-                title={user.displayName || user.email}
+                
               />
               <div className="absolute left-1/2 -translate-x-1/2 mt-1 hidden group-hover:block bg-white border text-sm px-2 py-1 rounded shadow">
-                {user.displayName || user.email}
+                {user.displayName}
               </div>
             </div>
 
