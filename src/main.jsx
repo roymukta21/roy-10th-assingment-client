@@ -12,6 +12,13 @@ import AuthProvider from './context/AuthProvider.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import ThemeToggle from './components/ThemeToggle.jsx';
+import FindPartner from './pages/FindPartner.jsx';
+import CreatePartnerProfile from './pages/CreatePartnerProfile.jsx';
+import MyConnections from './pages/MyConnections.Jsx';
+
+
+
+
 
 const router = createBrowserRouter([
   {
@@ -34,6 +41,18 @@ const router = createBrowserRouter([
         path:"Register",
         Component: Register
       },
+      {
+        path: "FindPartner",
+        Component: FindPartner
+      },
+      {
+        path: "CreatePartnerProfile",
+        Component: CreatePartnerProfile
+      },
+      {
+        path:"MyConnections",
+        Component:MyConnections
+      }
       // {
       //   path: "ThemeToggle",
       //   Component: ThemeToggle

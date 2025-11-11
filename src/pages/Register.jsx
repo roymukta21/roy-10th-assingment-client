@@ -11,6 +11,7 @@ export default function Signup() {
   // const [ setPassword, showPassword] = useState(false);
    const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
+  const from = location.state?.from?.pathname || "/home";
   
 
   const googleProvider = new GoogleAuthProvider();

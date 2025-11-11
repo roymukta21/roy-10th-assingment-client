@@ -19,15 +19,15 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/allProducts">All Products</NavLink>
+        <NavLink to="/FindPartner">Find Partner</NavLink>
       </li>
       {user && (
         <>
           <li>
-            <NavLink to="/my-products">My Products</NavLink>
+            <NavLink to="/CreatePartnerProfile">Create Partner Profile</NavLink>
           </li>
           <li>
-            <NavLink to="/my-bids">My Bids</NavLink>
+            <NavLink to="/MyConnections">My Connection</NavLink>
           </li>
         </>
       )}
