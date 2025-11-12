@@ -14,11 +14,13 @@ import Register from "./pages/Register.jsx";
 import FindPartner from "./pages/FindPartner.jsx";
 import CreatePartnerProfile from "./pages/CreatePartnerProfile.jsx";
 import MyConnection from "./pages/MyConnection.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
+    errorElement: <ErrorPage/>,
     children: [
       {
         index: true,
@@ -59,7 +61,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />,
+      <RouterProvider router={router} />
     </AuthProvider>
   </StrictMode>
 );
