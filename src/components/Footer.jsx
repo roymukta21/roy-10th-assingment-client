@@ -31,7 +31,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 sm:gap-6 text-base sm:text-lg text-secondary">
           <a
             href="https://www.facebook.com"
-            className="hover:text-blue-400 transition"
+            className="text-blue-500 transition"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -39,15 +39,15 @@ export default function Footer() {
           </a>
           <a
             href="https://www.x.com"
-            className="hover:text-blue-300 transition"
+            className="text-blue-300 transition"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaTwitter size={24} />
+            <img className="h-10" src="/10464257.png" alt="" />
           </a>
           <a
             href="https://www.instagram.com"
-            className="hover:text-pink-500 transition"
+            className="text-pink-500 transition"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -55,7 +55,7 @@ export default function Footer() {
           </a>
           <a
             href="https://mail.google.com/"
-            className="hover:text-yellow-400 transition"
+            className="text-yellow-400 transition"
           >
             <FaEnvelope size={24} />
           </a>
@@ -84,7 +84,7 @@ export default function Footer() {
       {/* Go to Top Button (hidden on small, visible on md+) */}
       <button
         onClick={scrollToTop}
-        className="hidden md:flex items-center justify-center fixed bottom-6 right-6 bg-gradient-to-tr from-blue-400 to-purple-500 hover:opacity-90 text-white p-4 rounded-full shadow-lg transition-all duration-300"
+        className="md:flex items-center justify-center fixed bottom-6 right-6 bg-gradient-to-tr from-blue-400 to-purple-500 hover:opacity-90 text-white p-4 rounded-full shadow-lg transition-all duration-300"
         aria-label="Go to top"
       >
         <ArrowUp size={22} />
