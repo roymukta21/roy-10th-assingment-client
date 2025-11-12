@@ -73,21 +73,33 @@ export default function Signup() {
             name="name"
             placeholder="Full Name"
             required
-            className="input border-accent w-full bg-white  text-secondary"
+            className="w-full border rounded px-3 py-2 
+             text-gray-900 placeholder-gray-500 
+             dark:bg-gray-800 dark:text-gray-100 
+             dark:placeholder-gray-400 dark:border-gray-600
+             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
           <input
             type="text"
             name="photo"
             placeholder="Photo URL"
             required
-            className="input border-accent w-full bg-white  text-secondary"
+            className="w-full border rounded px-3 py-2 
+             text-gray-900 placeholder-gray-500 
+             dark:bg-gray-800 dark:text-gray-100 
+             dark:placeholder-gray-400 dark:border-gray-600
+             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
           <input
             type="email"
             name="email"
             placeholder="Email"
             required
-            className="input border-accent w-full bg-white  text-secondary"
+            className="w-full border rounded px-3 py-2 
+             text-gray-900 placeholder-gray-500 
+             dark:bg-gray-800 dark:text-gray-100 
+             dark:placeholder-gray-400 dark:border-gray-600
+             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
           <div className="relative">
           <input
@@ -97,7 +109,11 @@ export default function Signup() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
-            className="w-full border rounded px-3 py-2 text-secondary"
+            className="w-full border rounded px-3 py-2 
+             text-gray-900 placeholder-gray-500 
+             dark:bg-gray-800 dark:text-gray-100 
+             dark:placeholder-gray-400 dark:border-gray-600
+             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
           <button
             type="button"

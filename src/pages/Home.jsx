@@ -2,15 +2,26 @@ import React from "react";
 import Carousel from "../components/Carousel";
 import TopStudyPartners from "../components/TopStudyPartners";
 import Testimonials from "../components/Testimonials";
-import HowItWorks from "./HowItWorks";
 
 const Home = () => {
+
+  const goToHowItWorks = () => {
+    window.location.href = "HowItWorks";
+  };
+
+
+
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <Carousel></Carousel>
       <TopStudyPartners></TopStudyPartners>
+      <button
+        onClick={goToHowItWorks} 
+        className="btn btn-ghost text-white border-white/30 justify-center"
+      >
+       See How It Works
+      </button>
       <Testimonials></Testimonials>
-      <HowItWorks></HowItWorks>
     </div>
   );
 };

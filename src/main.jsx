@@ -15,6 +15,8 @@ import FindPartner from "./pages/FindPartner.jsx";
 import CreatePartnerProfile from "./pages/CreatePartnerProfile.jsx";
 import MyConnection from "./pages/MyConnection.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
+import { Toaster } from "react-hot-toast";
+import HowItWorks from "./pages/HowItWorks.jsx";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +56,10 @@ const router = createBrowserRouter([
         path: "FindPartner",
         Component: FindPartner,
       },
+      {
+        path: "HowItWorks",
+        Component: HowItWorks
+      }
     ],
   },
 ]);
@@ -62,6 +68,8 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
       <RouterProvider router={router} />
+      <Toaster position="top-center" reverseOrder={false} /> 
+
     </AuthProvider>
   </StrictMode>
 );

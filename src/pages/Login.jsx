@@ -1,91 +1,82 @@
-
-
-import { GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
-
-import { Link, useLocation, useNavigate } from "react-router";
-import { auth } from "../firebase.init.js/firebase.init";
-import toast from "react-hot-toast";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-
-  
-
-
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
+import { auth } from "../firebase.init.js/firebase.init";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/home";
 
-  async function handleEmailLogin(e) {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword (auth, email, password);
-      toast.success("Logged in");
-      navigate(from, { replace: true });
-    } catch (err) {
-      toast.error(err.message);
+      // Firebase login
+      await signInWithEmailAndPassword(auth, email, password);
+      toast.success("Successfully logged in! 🎉");
+      navigate("/"); // ✅ go to Home
+    } catch (error) {
+      console.error("Login Error:", error.message);
+      // show error message
+      if (error.code === "auth/invalid-email") {
+        toast.error("Invalid email address!");
+      } else if (error.code === "auth/user-not-found") {
+        toast.error("No user found with this email!");
+      } else if (error.code === "auth/wrong-password") {
+        toast.error("Wrong password!");
+      } else {
+        toast.error("Login failed! Please try again.");
+      }
     }
-  }
-
-  // async function handleGoogle() {
-  //   try {
-  //     await signInWithPopup(auth, GoogleAuthProvider);
-  //     toast.success("Logged in with Google");
-  //     navigate(from, { replace: true });
-  //   } catch (err) {
-  //     toast.error(err.message);
-  //   }
-  // }
+  };
 
   return (
-    <div className="bg-red container mx-auto px-4 py-12 max-w-md ">
-      <h2 className="text-2xl font-semibold mb-4 ">Login</h2>
-      <form onSubmit={handleEmailLogin} className="space-y-3">
-        <input
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          className="w-full border rounded px-3 py-2"
-        />
-        <div className="relative">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <form
+        onSubmit={handleLogin}
+        className="bg-white shadow-md rounded-xl p-8 w-full max-w-md"
+      >
+        <h2 className="text-2xl font-bold text-center mb-6 text-primary">Login</h2>
+
+        <div className="mb-4">
+          <label className="block mb-2 text-secondary">Email</label>
           <input
+            type="email"
+            className="w-full border rounded px-3 py-2 
+             text-gray-900 placeholder-gray-500 
+             dark:bg-gray-800 dark:text-gray-100 
+             dark:placeholder-gray-400 dark:border-gray-600
+             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
-            type={showPass ? "text" : "password"}
+            placeholder="Enter your email"
+          />
+        </div>
+
+        <div className="mb-6">
+          <label className="block text-secondary mb-2">Password</label>
+          <input
+            type="password"
+            className="w-full border rounded px-3 py-2 
+             text-gray-900 placeholder-gray-500 
+             dark:bg-gray-800 dark:text-gray-100 
+             dark:placeholder-gray-400 dark:border-gray-600
+             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            className="w-full border rounded px-3 py-2"
+            required
+            placeholder="Enter your password"
           />
-          <button
-            type="button"
-            onClick={() => setShowPass((v) => !v)}
-            className="absolute right-2 top-2 text-sm"
-          >
-            {showPass ? "Hide" : "Show"}
-          </button>
         </div>
 
-        <div className="flex justify-between items-center">
-          <button className="btn-primary px-4 py-2 rounded" type="submit">
-            Login
-          </button>
-          <Link to="/auth/forgot-password" state={{ email }} className="text-sm">
-            Forgot password?
-          </Link>
-        </div>
-
-        <div className="text-center">Or</div>
-
-        <p className="text-sm">
-          Don't have an account?{" "}
-          <Link to="/register" className="text-blue-600">
-            Signup
-          </Link>
-        </p>
+        <button
+          className="btn-primary bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded w-full"
+          type="submit"
+        >
+          Login
+        </button>
       </form>
     </div>
   );
