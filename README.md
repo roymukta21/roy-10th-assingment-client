@@ -1,16 +1,69 @@
-# React + Vite
+# 📚 StudyMate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+StudyMate is a full-stack web application that connects learners and mentors in a skill-sharing platform.  
+Users can sign up with email/password or Google, explore courses, and manage profiles — built with **React**, **Firebase Authentication**, and **MongoDB** backend.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- 🔐 User authentication with Firebase (Email/Password & Google)
+- 🌗 Light/Dark mode toggle
+- 📱 Fully responsive modern UI with Tailwind CSS
+- 💾 Secure backend using MongoDB & Express
+- 🧭 Protected routes with React Router
+- 🔥 Toast notifications for better UX
+- ⚙️ Environment variable support for sensitive keys
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+- React.js (Vite)
+- Tailwind CSS
+- React Router
+- Firebase Authentication
+- React Hot Toast
+- React Icons
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB Atlas
+- dotenv
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone this repository
+```bash
+git https://github.com/roymukta21/roy-10th-assingment-client.git
+
+```bash
+git https://github.com/roymukta21/roy-10th-assingment-server.git
+
+
+🧠 Folder Structure
+StudyMate/
+├── client/                 # React frontend
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── context/
+│   │   ├── firebase.init.js
+│   │   ├── main.jsx
+│   │   └── App.jsx
+│   └── .env
+├── server/                 # Express backend
+│   ├── index.js
+│   ├── routes/
+│   ├── models/
+│   └── .env
+└── README.md
+
+🧑‍💻 Author
+
+👩‍💻 Mukta Roy
+🚀 Passionate Web Developer | React & Firebase Enthusiast

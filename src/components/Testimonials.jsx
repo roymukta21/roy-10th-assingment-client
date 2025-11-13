@@ -2,7 +2,7 @@ import React from 'react';
 
 const Testimonials = () => {
     return (
-        <section className="bg-gray-100 py-14 mt-14">
+        <section className="rounded-xl shadow-lg bg-[#baf381] border hover:shadow-xl transition p-5 text-secondary m-4">
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-3xl font-bold mb-8 text-blue-800">💬 Testimonials</h2>
 

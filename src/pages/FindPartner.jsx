@@ -8,7 +8,7 @@ export default function FindPartner() {
   const [sort, setSort] = useState("");
 
   useEffect(() => {
-    fetch("https://your-server-url.com/partners")
+    fetch("https://study-mate-server-blue.vercel.app/partners")
       .then((res) => res.json())
       .then((data) => setPartners(data));
   }, []);
@@ -25,13 +25,13 @@ export default function FindPartner() {
       : filteredPartners;
 
   return (
-    <div className="container mx-auto p-5 h-screen">
+    <div className="container mx-auto p-5 ">
       
       {/* Search & Sort Section */}
       <div className="flex justify-between mb-6">
         <select
           onChange={(e) => setSort(e.target.value)}
-          className="border p-2 rounded"
+          className="border p-2 rounded bg-white text-gray-900 dark:bg-gray-800 dark:text-gray-100"
         >
           <option value="">Sort By</option>
           <option value="rating">Rating (High → Low)</option>
@@ -53,7 +53,7 @@ export default function FindPartner() {
             className="shadow-lg border rounded-lg p-4 flex flex-col items-center"
           >
             <img
-              src={partner.profileimage}
+              src={partner.image}
               alt="Profile"
               className="w-28 h-28 object-cover rounded-full mb-3"
             />

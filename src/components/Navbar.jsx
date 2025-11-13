@@ -15,7 +15,7 @@ const Navbar = () => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // ✅ Theme Handler
+  // Theme Handler
   const handleTheme = (checked) => {
     setTheme(checked ? "dark" : "light");
   };
@@ -95,7 +95,7 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end flex items-center gap-3">
-        {/* ✅ THEME TOGGLE BUTTON */}
+        {/* THEME TOGGLE BUTTON */}
         <input
           onChange={(e) => handleTheme(e.target.checked)}
           type="checkbox"

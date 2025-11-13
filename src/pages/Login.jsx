@@ -7,18 +7,17 @@ import { auth } from "../firebase.init.js/firebase.init";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // ✅ added state for show/hide
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      // Firebase login
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("Successfully logged in! 🎉");
-      navigate("/"); // ✅ go to Home
+      navigate("/");
     } catch (error) {
       console.error("Login Error:", error.message);
-      // show error message
       if (error.code === "auth/invalid-email") {
         toast.error("Invalid email address!");
       } else if (error.code === "auth/user-not-found") {
@@ -55,10 +54,10 @@ export default function Login() {
           />
         </div>
 
-        <div className="mb-6">
+        <div className="mb-6 relative">
           <label className="block text-secondary mb-2">Password</label>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"} // ✅ toggle type
             className="w-full border rounded px-3 py-2 
              text-gray-900 placeholder-gray-500 
              dark:bg-gray-800 dark:text-gray-100 
@@ -69,6 +68,13 @@ export default function Login() {
             required
             placeholder="Enter your password"
           />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-3 top-9 text-gray-500 dark:text-gray-300"
+          >
+            {showPassword ? "Hide" : "Show"}
+          </button>
         </div>
 
         <button

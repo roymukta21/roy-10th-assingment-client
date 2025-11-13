@@ -17,6 +17,7 @@ import MyConnection from "./pages/MyConnection.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import { Toaster } from "react-hot-toast";
 import HowItWorks from "./pages/HowItWorks.jsx";
+import PartnerDetails from "./pages/PartnerDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,10 +29,10 @@ const router = createBrowserRouter([
         index: true,
         Component: Home,
       },
-      {
-        path: "Navbar",
-        Component: Navbar,
-      },
+      // {
+      //   path: "Navbar",
+      //   Component: Navbar,
+      // },
       {
         path: "Login",
         Component: Login,
@@ -52,13 +53,28 @@ const router = createBrowserRouter([
         path: "MyConnection",
         Component: MyConnection,
       },
-      {
-        path: "FindPartner",
-        Component: FindPartner,
-      },
+      // {
+      //   path: "FindPartner",
+      //   Component: FindPartner,
+      // },
       {
         path: "HowItWorks",
         Component: HowItWorks
+      },
+      // {
+      //   path: "PartnerDetails",
+      //   Component: PartnerDetails
+
+      // },
+      // {
+      //   path: "/partners",
+      //   Component: Partner
+
+      // },
+      {
+        path: "/partner/:id",
+        Component: PartnerDetails
+
       }
     ],
   },

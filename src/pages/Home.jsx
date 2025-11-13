@@ -17,7 +17,7 @@ const Home = () => {
       <TopStudyPartners></TopStudyPartners>
       <button
         onClick={goToHowItWorks} 
-        className="btn btn-ghost text-white border-white/30 justify-center"
+        className="btn btn-ghost text-white border-white/30 justify-center mt-5"
       >
        See How It Works
       </button>

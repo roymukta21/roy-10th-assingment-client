@@ -1,6 +1,11 @@
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  updateProfile,
+} from "firebase/auth";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { auth } from "../firebase.init.js/firebase.init";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
@@ -9,10 +14,10 @@ export default function Signup() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   // const [ setPassword, showPassword] = useState(false);
-   const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
-  const from = location.state?.from?.pathname || "/home";
-  
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const googleProvider = new GoogleAuthProvider();
 
@@ -21,14 +26,15 @@ export default function Signup() {
     const name = e.target.name.value.trim();
     const photoURL = e.target.photo.value.trim();
     const email = e.target.email.value.trim();
-    const password = e.target.password.value;
+    // Use the state password, not a new local variable
+    const userPassword = password;
 
-    // password validation
+    // Password validation
     if (
-      !/[A-Z]/.test(password) ||
-      !/[a-z]/.test(password) ||
-      !/[0-9]/.test(password) ||
-      password.length < 6
+      !/[A-Z]/.test(userPassword) ||
+      !/[a-z]/.test(userPassword) ||
+      !/[0-9]/.test(userPassword) ||
+      userPassword.length < 6
     ) {
       setError(
         "Password must contain uppercase, lowercase, number and be at least 6 characters long."
@@ -40,11 +46,21 @@ export default function Signup() {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
-        password
+        userPassword
       );
-      await updateProfile(userCredential.user, { displayName: name, photoURL });
+
+      // Only update profile if name or photoURL exist
+      if (name || photoURL) {
+        await updateProfile(userCredential.user, {
+          displayName: name,
+          photoURL,
+        });
+      }
+
       toast.success("Signup successful! Welcome aboard 💫");
-      navigate("/");
+
+      // Redirect to the page the user originally tried to access
+      navigate(from, { replace: true });
     } catch (err) {
       setError(err.message);
     }
@@ -102,27 +118,27 @@ export default function Signup() {
              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
           <div className="relative">
-          <input
-            required
-            type={showPass ? "text" : "password"}
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            className="w-full border rounded px-3 py-2 
+            <input
+              required
+              type={showPass ? "text" : "password"}
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              className="w-full border rounded px-3 py-2 
              text-gray-900 placeholder-gray-500 
              dark:bg-gray-800 dark:text-gray-100 
              dark:placeholder-gray-400 dark:border-gray-600
              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
-          <button
-            type="button"
-            onClick={() => setShowPass((v) => !v)}
-            className="absolute right-2 top-2 text-sm text-primary"
-          >
-            {showPass ? "Hide" : "Show"}
-          </button>
-        </div>
+            />
+            <button
+              type="button"
+              onClick={() => setShowPass((v) => !v)}
+              className="absolute right-2 top-2 text-sm text-primary"
+            >
+              {showPass ? "Hide" : "Show"}
+            </button>
+          </div>
           {error && <p className="text-red-400 text-sm">{error}</p>}
           <button
             type="submit"
@@ -132,7 +148,10 @@ export default function Signup() {
           </button>
         </form>
 
-        <button onClick={handleGoogleSignup} className="btn w-full mt-4 bg-accent">
+        <button
+          onClick={handleGoogleSignup}
+          className="btn w-full mt-4 bg-accent"
+        >
           <FcGoogle /> Continue with Google
         </button>
 

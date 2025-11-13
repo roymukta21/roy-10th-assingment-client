@@ -8,7 +8,7 @@ export default function TopStudyPartners() {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch("https://your-server-url.com/partners")
+    fetch("https://study-mate-server-blue.vercel.app/partners")
       .then((res) => res.json())
       .then((data) => {
         const sorted = data.sort((a, b) => b.rating - a.rating).slice(0, 3);
@@ -34,7 +34,7 @@ export default function TopStudyPartners() {
         {partners.map((p) => (
           <div
             key={p._id}
-            className="rounded-xl shadow-lg bg-white border hover:shadow-xl transition p-5"
+            className="rounded-xl shadow-lg bg-white border hover:shadow-xl transition p-5 text-secondary"
           >
             <img
               src={p.image}
