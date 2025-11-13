@@ -22,13 +22,15 @@ export default function PartnerDetails() {
     }
 
     try {
-      // 1️⃣ Increment partner count
-      const updatedPartner = { partnerCount: (partner.partnerCount || 0) + 1 };
-      await fetch(`https://study-mate-server-blue.vercel.app/partners/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedPartner),
-      });
+      // 1️⃣ Increment partner count atomically
+      await fetch(
+        `https://study-mate-server-blue.vercel.app/partners/${id}/increment`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ increment: 1 }), // tell backend to increment by 1
+        }
+      );
 
       // 2️⃣ Save request in 'requests' collection
       const requestData = {
@@ -45,8 +47,11 @@ export default function PartnerDetails() {
         body: JSON.stringify(requestData),
       });
 
-      // 3️⃣ Update local state
-      setPartner((prev) => ({ ...prev, partnerCount: updatedPartner.partnerCount }));
+      // 3️⃣ Update local state (optimistic)
+      setPartner((prev) => ({
+        ...prev,
+        partnerCount: (prev.partnerCount || 0) + 1,
+      }));
 
       // 4️⃣ Show success toast
       Swal.fire({
@@ -83,7 +88,9 @@ export default function PartnerDetails() {
 
           <p className="mt-4">
             <strong>Subjects: </strong>
-            {partner.subjects?.length ? partner.subjects.join(", ") : "Not specified"}
+            {partner.subjects?.length
+              ? partner.subjects.join(", ")
+              : "Not specified"}
           </p>
 
           <p className="mt-2">

@@ -77,8 +77,8 @@ export default function Carousel() {
                         s.cta === "Find Partners"
                           ? navigate("/FindPartner")
                           : s.cta === "Create Profile"
-                          ? navigate("/register")
-                          : navigate("/Login")
+                          ? navigate("/FindPartner")
+                          : navigate("/FindPartner")
                       }
                       className="btn btn-primary bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700"
                     >

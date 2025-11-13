@@ -110,9 +110,9 @@ const Navbar = () => {
               <img
                 src={user.photoURL || "/avatar-placeholder.png"}
                 alt="avatar"
-                className="w-10 h-10 rounded-full object-cover border border-gray-300"
+                className="w-10 h-10 rounded-full object-cover border border-gray-300 "
               />
-              <div className="absolute left-1/2 -translate-x-1/2 mt-1 hidden group-hover:block bg-white border text-sm px-2 py-1 rounded shadow">
+              <div className="absolute left-1/2 -translate-x-1/2 mt-1 hidden group-hover:block bg-white border text-sm px-2 py-1 rounded shadow z-50">
                 {user.displayName}
               </div>
             </div>
