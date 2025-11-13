@@ -84,7 +84,7 @@ const Navbar = () => {
             src="/freepik-hand-drawn-linear-known-academy-logo-202511081639166U46.png"
             alt="StudyMate Logo"
           />
-          <h1 className="text-xl font-semibold">
+          <h1 className="hidden md:flex text-xl font-semibold">
             Study<span className="font-light">Mate</span>
           </h1>
         </Link>
