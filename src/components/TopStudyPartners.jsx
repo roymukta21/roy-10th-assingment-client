@@ -25,43 +25,57 @@ export default function TopStudyPartners() {
   };
 
   return (
-    <section className="container mx-auto px-6 mt-14">
-      <h2 className="text-center text-3xl md:text-4xl font-bold mb-10 text-secondary">
-        ⭐ Top Study Partners
-      </h2>
+  <section className="container mx-auto px-6 mt-14">
+  <h2 className="text-center text-3xl md:text-4xl font-bold mb-10 text-secondary">
+    ⭐ Top Study Partners
+  </h2>
 
-      <div className="grid md:grid-cols-3 gap-6">
-        {partners.map((p) => (
-          <div
-            key={p._id}
-            className="rounded-xl shadow-lg bg-white border hover:shadow-xl transition p-5 text-secondary"
-          >
-            <img
-              src={p.image}
-              alt={p.name}
-              className="w-full h-48 object-cover rounded-md"
-            />
+  <div className="grid md:grid-cols-3 sm:grid-cols-3 gap-6 bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+    {partners.map((p) => (
+      <div
+        key={p._id}
+        className="rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-5"
+      >
+        {/* Image */}
+        <div className="relative">
+          <img
+            src={p.image}
+            alt={p.name}
+            className="w-full h-48 object-cover rounded-xl shadow-md"
+          />
 
-            <h3 className="text-xl font-semibold mt-4">{p.name}</h3>
-            <p className="text-gray-600 text-sm mt-1">
-              {p.subjects?.join(", ")}
-            </p>
-
-            <p className="mt-2 text-sm font-medium">
-              Skills: <span className="text-blue-600">{p.skills}</span>
-            </p>
-
-            <p className="mt-2 font-bold text-yellow-500">⭐ {p.rating}</p>
-
-            <button
-              onClick={() => handleView(p._id)}
-              className="btn btn-primary w-full mt-4"
-            >
-              View Profile
-            </button>
+          {/* Rating Badge */}
+          <div className="absolute top-3 right-3 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full shadow">
+            ⭐ {p.rating}
           </div>
-        ))}
+        </div>
+
+        {/* Name */}
+        <h3 className="text-xl font-semibold mt-4 text-gray-900 dark:text-gray-100">
+          {p.name}
+        </h3>
+
+        {/* Subjects */}
+        <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+          📚 <span className="font-medium">{p.subject}</span>
+        </p>
+
+        {/* Skills */}
+       <span className="mt-2 text-xs px-3 py-1 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200">
+         🤹🏻 {p.experienceLevel}
+        </span>
+
+        {/* Bottom Button */}
+        <button
+          onClick={() => handleView(p._id)}
+          className="mt-5 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl transition-all duration-300 shadow-md"
+        >
+          View Profile
+        </button>
       </div>
-    </section>
+    ))}
+  </div>
+</section>
+
   );
 }

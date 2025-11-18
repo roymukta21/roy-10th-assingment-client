@@ -8,7 +8,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#baf381] text-center  rounded-t-[6rem] sm:rounded-t-[8rem] w-full">
+    <footer className="relative bg-[#fef3c7] text-center mt-3  rounded-t-[1rem]  w-full">
       {/* Container */}
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center justify-center pt-16 pb-12 px-4 text-primary space-y-5 sm:space-y-7">
         {/* Logo */}
@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="flex items-center space-x-2">
             <img
               className="h-8 sm:h-10 w-auto"
-              src="/freepik-hand-drawn-linear-known-academy-logo-202511081639166U46.png"
+              src="/logo.png"
               alt="StudyMate Logo"
             />
             <h1 className="text-xl sm:text-2xl font-semibold">
@@ -24,8 +24,6 @@ export default function Footer() {
             </h1>
           </div>
         </Link>
-
-        
 
         {/* Main Links — stacked on mobile */}
         <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 sm:gap-6 text-base sm:text-lg text-secondary">
@@ -60,6 +58,10 @@ export default function Footer() {
             <FaEnvelope size={24} />
           </a>
         </div>
+
+         <p className="mt-2 text-primary">
+          Connect with study partners and achieve your learning goals together.
+        </p>
 
         {/* Terms and Privacy */}
         <div className="flex flex-wrap justify-center gap-6 sm:gap-10 text-gray-600 text-sm sm:text-base mt-6">

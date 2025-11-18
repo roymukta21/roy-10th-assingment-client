@@ -6,20 +6,20 @@ export default function MyConnection() {
   const { user } = useContext(AuthContext);
   const [connections, setConnections] = useState([]);
 
-  // ✅ Load user’s connections
+  //  Load user’s connections
   useEffect(() => {
     if (user?.email) {
-      fetch(
-        `https://study-mate-server-blue.vercel.app/connections?email=${user.email}`
-      )
+      fetch(`http://localhost:5000/connections?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setConnections(data))
+
         .catch((err) => console.error("Error fetching connections:", err));
     }
   }, [user]);
 
-  // ✅ DELETE a connection
+  //  DELETE a connection
   const handleDelete = (id) => {
+    console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "This action cannot be undone!",
@@ -35,7 +35,11 @@ export default function MyConnection() {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Connection removed successfully.", "success");
+              Swal.fire(
+                "Deleted!",
+                "Connection removed successfully.",
+                "success"
+              );
               setConnections((prev) => prev.filter((item) => item._id !== id));
             }
           })
@@ -44,15 +48,19 @@ export default function MyConnection() {
     });
   };
 
-  // ✅ UPDATE connection (edit + save in same page)
-  const handleUpdate = (partner) => {
+  //  UPDATE connection (edit + save in same page)
+  const handleUpdate = (connections) => {
     Swal.fire({
       title: "Update Connection Info",
       html: `
         <label>Subject:</label>
-        <input id="subject" class="swal2-input" placeholder="Subject" value="${partner.subject || ""}">
+        <input id="subject" class="swal2-input" placeholder="Subject" value="${
+          connections.subject || ""
+        }">
         <label>Study Mode:</label>
-        <input id="studyMode" class="swal2-input" placeholder="Study Mode" value="${partner.studyMode || ""}">
+        <input id="studyMode" class="swal2-input" placeholder="Study Mode" value="${
+          connections.studyMode || ""
+        }">
       `,
       focusConfirm: false,
       showCancelButton: true,
@@ -75,20 +83,34 @@ export default function MyConnection() {
           studyMode: result.value.studyMode,
         };
 
-        fetch(`https://study-mate-server-blue.vercel.app/connections/${partner._id}`, {
+        fetch(`http://localhost:5000/connections/${connections._id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedData),
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data.modifiedCount > 0) {
-              Swal.fire("Saved!", "Connection updated successfully.", "success");
+            console.log(data)
+            if (data.success) {
+              Swal.fire(
+                "Saved!",
+                "Connection updated successfully.",
+                "success"
+              );
+              fetch(`http://localhost:5000/connections?email=${user.email}`)
+                .then((res) => res.json())
+                .then((data) => setConnections(data))
 
-              // ✅ Instantly update UI
+                .catch((err) =>
+                  console.error("Error fetching connections:", err)
+                );
+
+              //  Instantly update UI
               setConnections((prev) =>
                 prev.map((item) =>
-                  item._id === partner._id ? { ...item, ...updatedData } : item
+                  item._id === connections._id
+                    ? { ...item, ...updatedData }
+                    : item
                 )
               );
             } else {
@@ -117,7 +139,7 @@ export default function MyConnection() {
         <div className="overflow-x-auto">
           <table className="table w-full">
             <thead>
-              <tr className="bg-gray-200 text-left">
+              <tr className="bg-amber-100 text-left text-black shadow">
                 <th>Profile</th>
                 <th>Subject</th>
                 <th>Study Mode</th>
@@ -127,24 +149,26 @@ export default function MyConnection() {
             </thead>
 
             <tbody>
-              {connections.map((partner) => (
-                <tr key={partner._id} className="border-b">
+              {connections.map((connection) => (
+                <tr key={connection._id} className="border-b">
                   <td className="flex items-center gap-3 py-2">
                     <img
-                      src={partner.image}
+                      src={connection.partnerImage}
                       alt="Profile"
                       className="w-12 h-12 rounded-full"
                     />
-                    <span className="font-semibold">{partner.name}</span>
+                    <span className="font-semibold">
+                      {connection.partnerName}
+                    </span>
                   </td>
 
-                  <td>{partner.subject}</td>
-                  <td>{partner.studyMode}</td>
+                  <td>{connection.partnerSubject}</td>
+                  <td>{connection.partnerStudyMode}</td>
 
                   <td>
                     <button
                       className="btn btn-sm btn-outline btn-primary"
-                      onClick={() => handleUpdate(partner)}
+                      onClick={() => handleUpdate(connection)}
                     >
                       Update
                     </button>
@@ -153,7 +177,7 @@ export default function MyConnection() {
                   <td>
                     <button
                       className="btn btn-sm btn-outline btn-error"
-                      onClick={() => handleDelete(partner._id)}
+                      onClick={() => handleDelete(connection._id)}
                     >
                       Delete
                     </button>

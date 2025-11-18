@@ -37,13 +37,8 @@ Users can sign up with email/password or Google, explore courses, and manage pro
 
 ## ⚙️ Installation & Setup
 
-### 1️⃣ Clone this repository
-```bash
-git https://github.com/roymukta21/roy-10th-assingment-client.git
-
-```bash
-git https://github.com/roymukta21/roy-10th-assingment-server.git
-
+app link
+https://study-mate-597e5.web.app/
 
 🧠 Folder Structure
 StudyMate/

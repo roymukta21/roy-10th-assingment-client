@@ -21,39 +21,45 @@ export default function PartnerDetails() {
       return navigate("/login");
     }
 
-    try {
-      // 1️⃣ Increment partner count atomically
-      await fetch(
-        `https://study-mate-server-blue.vercel.app/partners/${id}/increment`,
-        {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ increment: 1 }), // tell backend to increment by 1
-        }
-      );
+    // Prevent sending request to self
+  if (user.email === partner.email) {
+    return Swal.fire({
+      icon: "warning",
+      title: "Oops!",
+      text: "You cannot send a request to yourself.",
+    });
+  }
 
-      // 2️⃣ Save request in 'requests' collection
-      const requestData = {
-        partnerId: id,
-        partnerName: partner.name,
-        partnerEmail: partner.email,
-        requestedBy: user.email,
-        requestedAt: new Date(),
-      };
+   try {
+    const requestData = {
+      partnerId: id,
+      partnerImage: partner.image,
+      partnerStudyMode: partner.studyMode,
+      partnerSubject: partner.subject,
+      partnerName: partner.name,
+      partnerEmail: partner.email,
+      senderEmail: user.email,  
+      message: "I'd like to connect with you!", 
+    };
 
-      await fetch(`https://study-mate-server-blue.vercel.app/requests`, {
+    const res = await fetch(
+      "http://localhost:5000/connections",
+      {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestData),
-      });
+      }
+    );
 
-      // 3️⃣ Update local state (optimistic)
+    const data = await res.json();
+
+    if (res.ok) {
+      // Update UI locally
       setPartner((prev) => ({
         ...prev,
         partnerCount: (prev.partnerCount || 0) + 1,
       }));
 
-      // 4️⃣ Show success toast
       Swal.fire({
         icon: "success",
         title: "Request Sent!",
@@ -61,7 +67,14 @@ export default function PartnerDetails() {
         timer: 2000,
         showConfirmButton: false,
       });
-    } catch (error) {
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Failed",
+        text: data.message || "Something went wrong.",
+      });
+    }
+  } catch (error) {
       console.error(error);
       Swal.fire({
         icon: "error",
@@ -87,15 +100,13 @@ export default function PartnerDetails() {
           <p className="text-gray-600 mt-2">{partner.bio}</p>
 
           <p className="mt-4">
-            <strong>Subjects: </strong>
-            {partner.subjects?.length
-              ? partner.subjects.join(", ")
-              : "Not specified"}
+            <strong>Subject: </strong>
+            {partner.subject}
           </p>
 
           <p className="mt-2">
             <strong>Skill: </strong>
-            {partner.skill}
+            {partner.experienceLevel}
           </p>
 
           <p className="mt-2">
@@ -110,7 +121,7 @@ export default function PartnerDetails() {
 
           <p className="mt-2">
             <strong>Experience Level: </strong>
-            {partner.experience || "Not specified"}
+            {partner.experienceLevel || "Not specified"}
           </p>
 
           <p className="mt-2 text-yellow-500 font-semibold">
@@ -133,8 +144,9 @@ export default function PartnerDetails() {
         </div>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-10 pt-20">
         <h2 className="text-2xl font-semibold mb-3">Availability Schedule</h2>
+
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {partner.availability?.map((slot, index) => (
             <div key={index} className="p-4 border rounded-lg bg-base-100">

@@ -9,7 +9,7 @@ export default function HowItWorks() {
         <div className="grid md:grid-cols-4 gap-8 ">
 
           {/* Step 1 */}
-          <div className="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition bg-[#baf381]">
+          <div className="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition bg-[#fef3c7]">
             <div className="text-4xl">✏️</div>
             <h3 className="text-xl font-semibold mt-3 text-blue-800">Click Update</h3>
             <p className="mt-2 text-sm text-secondary">
@@ -18,7 +18,7 @@ export default function HowItWorks() {
           </div>
 
           {/* Step 2 */}
-          <div className="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition bg-[#baf381]">
+          <div className="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition bg-[#fef3c7]">
             <div className="text-4xl">📝</div>
             <h3 className="text-xl font-semibold mt-3 text-blue-800">Edit Information</h3>
             <p className="text-secondary mt-2 text-sm">
@@ -27,7 +27,7 @@ export default function HowItWorks() {
           </div>
 
           {/* Step 3 */}
-          <div className="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition bg-[#baf381]">
+          <div className="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition bg-[#fef3c7]">
             <div className="text-4xl">✅</div>
             <h3 className="text-xl font-semibold mt-3 text-blue-800">Save Changes</h3>
             <p className="text-secondary mt-2 text-sm">
@@ -36,7 +36,7 @@ export default function HowItWorks() {
           </div>
 
           {/* Step 4 */}
-          <div className="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition text-blue-800 bg-[#baf381]">
+          <div className="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition text-blue-800 bg-[#fef3c7]">
             <div className="text-4xl">🎉</div>
             <h3 className="text-xl font-semibold mt-3">Success!</h3>
             <p className="text-secondary mt-2 text-sm">

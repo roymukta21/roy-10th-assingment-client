@@ -4,6 +4,8 @@ import { Link, NavLink } from "react-router";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase.init.js/firebase.init";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
+
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
@@ -40,18 +42,22 @@ const Navbar = () => {
       )}
     </>
   );
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      toast.success("Logged out successfully!");
-    } catch (error) {
-      console.error("Logout error:", error);
-      toast.error("Logout failed! Please try again.");
-    }
-  };
+
+  const navigate = useNavigate();
+
+const handleLogout = async () => {
+  try {
+    await signOut(auth);
+    toast.success("Logged out successfully!");
+    navigate("/");
+  } catch (error) {
+    console.error("Logout error:", error);
+    toast.error("Logout failed! Please try again.");
+  }
+};
 
   return (
-    <div className="navbar shadow-sm text-primary bg-[#baf381]">
+    <div className="navbar shadow-sm text-primary bg-[#fef3c7] fixed top-0 left-0 w-full  p-4 z-50 ">
       <div className="navbar-start gap-2">
         <div className="dropdown z-50">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -72,7 +78,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={-1}
-            className="menu menu-sm dropdown-content bg-[#baf381] rounded-box z-10 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-[#fef3c7] rounded-box z-10 mt-3 w-52 p-2 shadow"
           >
             {links}
           </ul>
@@ -81,7 +87,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-2 text-xl font-semibold">
           <img
             className="h-10 w-auto"
-            src="/freepik-hand-drawn-linear-known-academy-logo-202511081639166U46.png"
+            src="/logo.png"
             alt="StudyMate Logo"
           />
           <h1 className="hidden md:flex text-xl font-semibold">
