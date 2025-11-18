@@ -75,7 +75,7 @@ export default function CreatePartnerProfile() {
         }
       );
       const data = await res.json();
-      console.log(data);
+      //console.log(data);
 
       Swal.fire({
         title: "Success!",

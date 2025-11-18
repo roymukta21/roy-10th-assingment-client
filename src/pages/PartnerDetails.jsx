@@ -43,7 +43,7 @@ export default function PartnerDetails() {
     };
 
     const res = await fetch(
-      "http://localhost:5000/connections",
+      "http://study-mate-server-blue.vercel.app/connections",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

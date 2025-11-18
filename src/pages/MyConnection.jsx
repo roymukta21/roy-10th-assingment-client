@@ -9,7 +9,7 @@ export default function MyConnection() {
   //  Load user’s connections
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/connections?email=${user.email}`)
+      fetch(`https://study-mate-server-blue.vercel.app/connections?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setConnections(data))
 
@@ -19,7 +19,7 @@ export default function MyConnection() {
 
   //  DELETE a connection
   const handleDelete = (id) => {
-    console.log(id);
+    //console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "This action cannot be undone!",
@@ -83,7 +83,7 @@ export default function MyConnection() {
           studyMode: result.value.studyMode,
         };
 
-        fetch(`http://localhost:5000/connections/${connections._id}`, {
+        fetch(`http://study-mate-server-blue.vercel.app/connections/${connections._id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedData),
@@ -97,7 +97,7 @@ export default function MyConnection() {
                 "Connection updated successfully.",
                 "success"
               );
-              fetch(`http://localhost:5000/connections?email=${user.email}`)
+              fetch(`http://study-mate-server-blue.vercel.app/connections?email=${user.email}`)
                 .then((res) => res.json())
                 .then((data) => setConnections(data))
 

@@ -43,8 +43,8 @@ const sortedPartners =
         (a, b) => levelOrder[b.experienceLevel] - levelOrder[a.experienceLevel]
       )
     : filteredPartners;
-console.log(filteredPartners)
-console.log(sortedPartners)
+//console.log(filteredPartners)
+//console.log(sortedPartners)
   return (
     <div className="container mx-auto pt-25 ">
       
