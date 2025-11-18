@@ -43,7 +43,7 @@ export default function PartnerDetails() {
     };
 
     const res = await fetch(
-      "http://study-mate-server-blue.vercel.app/connections",
+      "https://study-mate-server-blue.vercel.app/connections",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -52,7 +52,7 @@ export default function PartnerDetails() {
     );
 
     const data = await res.json();
-
+console.log(data)
     if (res.ok) {
       // Update UI locally
       setPartner((prev) => ({

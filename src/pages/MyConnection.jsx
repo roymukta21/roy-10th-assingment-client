@@ -83,7 +83,7 @@ export default function MyConnection() {
           studyMode: result.value.studyMode,
         };
 
-        fetch(`http://study-mate-server-blue.vercel.app/connections/${connections._id}`, {
+        fetch(`https://study-mate-server-blue.vercel.app/connections/${connections._id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedData),
@@ -97,7 +97,7 @@ export default function MyConnection() {
                 "Connection updated successfully.",
                 "success"
               );
-              fetch(`http://study-mate-server-blue.vercel.app/connections?email=${user.email}`)
+              fetch(`https://study-mate-server-blue.vercel.app/connections?email=${user.email}`)
                 .then((res) => res.json())
                 .then((data) => setConnections(data))
 
