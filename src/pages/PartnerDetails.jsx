@@ -10,7 +10,7 @@ export default function PartnerDetails() {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`https://study-mate-server-blue.vercel.app/partners/${id}`)
+    fetch(`http://localhost:5000/partners/${id}`)
       .then((res) => res.json())
       .then((data) => setPartner(data))
       .catch((err) => console.error(err));
@@ -22,59 +22,56 @@ export default function PartnerDetails() {
     }
 
     // Prevent sending request to self
-  if (user.email === partner.email) {
-    return Swal.fire({
-      icon: "warning",
-      title: "Oops!",
-      text: "You cannot send a request to yourself.",
-    });
-  }
+    if (user.email === partner.email) {
+      return Swal.fire({
+        icon: "warning",
+        title: "Oops!",
+        text: "You cannot send a request to yourself.",
+      });
+    }
 
-   try {
-    const requestData = {
-      partnerId: id,
-      partnerImage: partner.image,
-      partnerStudyMode: partner.studyMode,
-      partnerSubject: partner.subject,
-      partnerName: partner.name,
-      partnerEmail: partner.email,
-      senderEmail: user.email,  
-      message: "I'd like to connect with you!", 
-    };
+    try {
+      const requestData = {
+        partnerId: id,
+        partnerImage: partner.image,
+        partnerStudyMode: partner.studyMode,
+        partnerSubject: partner.subject,
+        partnerName: partner.name,
+        partnerEmail: partner.email,
+        senderEmail: user.email,
+        message: "I'd like to connect with you!",
+      };
 
-    const res = await fetch(
-      "https://study-mate-server-blue.vercel.app/connections",
-      {
+      const res = await fetch("http://localhost:5000/connections", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestData),
+      });
+
+      const data = await res.json();
+      console.log(data);
+      if (res.ok) {
+        // Update UI locally
+        setPartner((prev) => ({
+          ...prev,
+          partnerCount: (prev.partnerCount || 0) + 1,
+        }));
+
+        Swal.fire({
+          icon: "success",
+          title: "Request Sent!",
+          text: "Your study request has been sent successfully.",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Failed",
+          text: data.message || "Something went wrong.",
+        });
       }
-    );
-
-    const data = await res.json();
-console.log(data)
-    if (res.ok) {
-      // Update UI locally
-      setPartner((prev) => ({
-        ...prev,
-        partnerCount: (prev.partnerCount || 0) + 1,
-      }));
-
-      Swal.fire({
-        icon: "success",
-        title: "Request Sent!",
-        text: "Your study request has been sent successfully.",
-        timer: 2000,
-        showConfirmButton: false,
-      });
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Failed",
-        text: data.message || "Something went wrong.",
-      });
-    }
-  } catch (error) {
+    } catch (error) {
       console.error(error);
       Swal.fire({
         icon: "error",

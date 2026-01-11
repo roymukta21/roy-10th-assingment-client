@@ -13,7 +13,7 @@ export default function FindPartner() {
 
 
   useEffect(() => {
-    fetch("https://study-mate-server-blue.vercel.app/partners")
+    fetch("http://localhost:5000/partners")
       .then((res) => res.json())
       .then((data) => setPartners(data));
   }, []);

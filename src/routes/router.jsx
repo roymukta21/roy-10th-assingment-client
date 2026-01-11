@@ -1,77 +1,58 @@
 import { createBrowserRouter } from "react-router";
+import RootLayout from "../layouts/RootLayout";
+import Home from "../pages/Home";
+import HowItWork from "../pages/HowItWork";
+import FindPartner from "../pages/FindPartner";
+import PartnerDetails from "../pages/PartnerDetails";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import ErrorPage from "../pages/ErrorPage";
 
-//import RootLayout from "../layouts/RootLayout";
-// import Home from "../pages/Home";
-// import Login from "../pages/Login";
-// import Register from "../pages/Register";
-// import FindPartner from "../pages/FindPartner";
-// import CreatePartnerProfile from "../pages/CreatePartnerProfile";
-// import MyConnection from "../pages/MyConnection";
-// import ErrorPage from "../pages/ErrorPage";
-// import HowItWorks from "../pages/HowItWorks";
-// import PartnerDetails from "../pages/PartnerDetails";
+import DashboardLayout from "../dashboard/DashboardLayout";
+import Overview from "../dashboard/Overview";
+import Profile from "../dashboard/Profile";
+import EditProfile from "../dashboard/EditProfile";
+import CreatePartnerProfile from "../dashboard/CreatePartnerProfile";
+import Analytics from "../dashboard/Analytics";
+import Settings from "../dashboard/Settings";
+//import MyConnection from "../dashboard/MyConnection";
 
-// import PrivateRoute from "./PrivateRoute";
-// //import RootLayout from "../src/layouts/RootLayout";
-// import HowItWorks from "../src/pages/HowItWorks";
-// import FindPartner from "../src/pages/FindPartner";
-// import ErrorPage from "../pages/ErrorPage.jsx";
-
-import RootLayout from "../layouts/RootLayout.jsx";
-import Home from "../pages/Home.jsx";
-import Login from "../pages/Login.jsx";
-import Register from "../pages/Register.jsx";
-import FindPartner from "../pages/FindPartner.jsx";
-import CreatePartnerProfile from "../pages/CreatePartnerProfile.jsx";
-import MyConnection from "../pages/MyConnection.jsx";
-import ErrorPage from "../pages/ErrorPage.jsx";
-import HowItWorks from "../pages/HowItWorks.jsx";
-import PartnerDetails from "../pages/PartnerDetails.jsx";
-
-import PrivateRoute from "./PrivateRoute.jsx";
-
-
+import PrivateRoute from "./PrivateRoute";
+import MyConnection from "../dashboard/MyConnection";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    Component: RootLayout,
-    errorElement: <ErrorPage/>,
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
-      { index: true, Component: Home },
+      { path: "/", element: <Home /> },
+      { path: "HowItWorks", element: <HowItWork /> },
+      { path: "FindPartner", element: <FindPartner /> },
+      { path: "/partner/:id", element: <PartnerDetails /> },
+      { path: "/login", element: <Login /> },
+      { path: "/register", element: <Register /> },
+    ],
+  },
 
-      { path: "Login", Component: Login },
-      { path: "Register", Component: Register },
-      { path: "FindPartner", Component: FindPartner },
-
-      {
-        path: "CreatePartnerProfile",
-        element: (
-          <PrivateRoute>
-            <CreatePartnerProfile />
-          </PrivateRoute>
-        ),
-      },
-
-      {
-        path: "MyConnection",
-        element: (
-          <PrivateRoute>
-            <MyConnection />
-          </PrivateRoute>
-        ),
-      },
-
-      { path: "HowItWorks", Component: HowItWorks },
-
-      {
-        path: "/partner/:id",
-        element: (
-          <PrivateRoute>
-            <PartnerDetails />
-          </PrivateRoute>
-        ),
-      },
+  
+  //DASHBOARD
+  
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      { path: "Overview", element: <Overview /> },
+      { path: "Profile", element: <Profile /> },
+      { path: "EditProfile", element: <EditProfile /> },
+      { path: "CreatePartnerProfile", element: <CreatePartnerProfile /> },
+      { path: "Analytics", element: <Analytics /> },
+      { path: "Settings", element: <Settings /> },
+      { path: "MyConnection", element: <MyConnection/> },
     ],
   },
 ]);

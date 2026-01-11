@@ -3,7 +3,9 @@ import { useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
 
-export default function CreatePartnerProfile() {
+
+const CreatePartnerProfile = () => {
+  {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -51,7 +53,7 @@ export default function CreatePartnerProfile() {
     try {
       // Step 1: Check if a profile already exists for this email
       const checkRes = await fetch(
-        `https://study-mate-server-blue.vercel.app/partners?email=${user?.email}`
+        `http://localhost:5000/partners?email=${user?.email}`
       );
       const existingProfiles = await checkRes.json();
 
@@ -67,7 +69,7 @@ export default function CreatePartnerProfile() {
 
       // Step 2: Create new profile
       const res = await fetch(
-        "https://study-mate-server-blue.vercel.app/partners",
+        "http://localhost:5000/partners",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -220,3 +222,7 @@ export default function CreatePartnerProfile() {
     </div>
   );
 }
+
+};
+
+export default CreatePartnerProfile;
