@@ -10,7 +10,7 @@ export default function PartnerDetails() {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/partners/${id}`)
+    fetch(`https://study-mate-597e5.web.app/partners/${id}`)
       .then((res) => res.json())
       .then((data) => setPartner(data))
       .catch((err) => console.error(err));
@@ -42,7 +42,7 @@ export default function PartnerDetails() {
         message: "I'd like to connect with you!",
       };
 
-      const res = await fetch("http://localhost:5000/connections", {
+      const res = await fetch("https://study-mate-597e5.web.app/connections", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestData),

@@ -13,7 +13,7 @@ export default function FindPartner() {
 
 
   useEffect(() => {
-    fetch("http://localhost:5000/partners")
+    fetch("https://study-mate-597e5.web.app/partners")
       .then((res) => res.json())
       .then((data) => setPartners(data));
   }, []);

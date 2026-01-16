@@ -8,7 +8,7 @@ export default function TopStudyPartners() {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch("http://localhost:5000/partners")
+    fetch("https://study-mate-597e5.web.app/partners")
       .then((res) => res.json())
       .then((data) => {
         const sorted = data.sort((a, b) => b.rating - a.rating).slice(0, 3);
