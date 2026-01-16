@@ -9,7 +9,7 @@ export default function MyConnection() {
   //  Load user’s connections
   useEffect(() => {
     if (user?.email) {
-      fetch(`https://study-mate-597e5.web.app/connections?email=${user.email}`)
+      fetch(`https://study-mate-server-blue.vercel.app/connections?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setConnections(data))
 
@@ -29,7 +29,7 @@ export default function MyConnection() {
       cancelButtonText: "Cancel",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://study-mate-597e5.web.app/connections/${id}`, {
+        fetch(`https://study-mate-server-blue.vercel.app/connections/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -83,7 +83,7 @@ export default function MyConnection() {
           studyMode: result.value.studyMode,
         };
 
-        fetch(`https://study-mate-597e5.web.app/connections/${connections._id}`, {
+        fetch(`https://study-mate-server-blue.vercel.app/connections/${connections._id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedData),
@@ -97,7 +97,7 @@ export default function MyConnection() {
                 "Connection updated successfully.",
                 "success"
               );
-              fetch(`https://study-mate-597e5.web.app/connections?email=${user.email}`)
+              fetch(`https://study-mate-server-blue.vercel.app/connections?email=${user.email}`)
                 .then((res) => res.json())
                 .then((data) => setConnections(data))
 

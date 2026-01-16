@@ -53,7 +53,7 @@ const CreatePartnerProfile = () => {
     try {
       // Step 1: Check if a profile already exists for this email
       const checkRes = await fetch(
-        `https://study-mate-597e5.web.app/partners?email=${user?.email}`
+        `https://study-mate-server-blue.vercel.app/partners?email=${user?.email}`
       );
       const existingProfiles = await checkRes.json();
 
@@ -69,7 +69,7 @@ const CreatePartnerProfile = () => {
 
       // Step 2: Create new profile
       const res = await fetch(
-        "https://study-mate-597e5.web.app/partners",
+        "https://study-mate-server-blue.vercel.app/partners",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

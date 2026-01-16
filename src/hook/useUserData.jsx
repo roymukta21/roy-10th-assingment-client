@@ -7,7 +7,7 @@ const useUserData = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`https://study-mate-597e5.web.app/users?email=${user.email}`)
+      fetch(`https://study-mate-server-blue.vercel.app/users?email=${user.email}`)
         .then(res => res.json())
         .then(data => setMongoUser(data));
     }
