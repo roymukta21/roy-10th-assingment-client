@@ -1,22 +1,17 @@
-//import { useAuth } from "../../hook/useAuth";
-import { FiLogOut } from "react-icons/fi";
-import useAuth from "../../hook/useAuth";
+import { FiMenu } from "react-icons/fi";
 
-const DashboardNavbar = () => {
-  const { user, logout } = useAuth();
-
+const DashboardNavbar = ({ setSidebarOpen }) => {
   return (
-    <div className="h-16 bg-white dark:bg-gray-800 flex items-center justify-between px-6 shadow">
-      <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
-        Welcome, {user?.displayName || "User"} 👋
-      </h2>
-
+    <div className="flex items-center justify-between px-6 py-4 bg-gray-800 shadow-md">
+      {/* Hamburger (only md & small) */}
       <button
-        onClick={logout}
-        className="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
+        className="md:hidden text-2xl text-white"
+        onClick={() => setSidebarOpen(true)}
       >
-        <FiLogOut /> Logout
+        <FiMenu />
       </button>
+
+      <h1 className="text-lg font-semibold">Dashboard</h1>
     </div>
   );
 };

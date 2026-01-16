@@ -19,6 +19,7 @@ import Settings from "../dashboard/Settings";
 
 import PrivateRoute from "./PrivateRoute";
 import MyConnection from "../dashboard/MyConnection";
+import BlogDetails from "../pages/BlogDetails";
 
 const router = createBrowserRouter([
   {
@@ -32,12 +33,14 @@ const router = createBrowserRouter([
       { path: "/partner/:id", element: <PartnerDetails /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
+      {
+        path: "/blog/:id", element: <BlogDetails/>
+      },
     ],
   },
 
-  
   //DASHBOARD
-  
+
   {
     path: "/dashboard",
     element: (
@@ -52,7 +55,7 @@ const router = createBrowserRouter([
       { path: "CreatePartnerProfile", element: <CreatePartnerProfile /> },
       { path: "Analytics", element: <Analytics /> },
       { path: "Settings", element: <Settings /> },
-      { path: "MyConnection", element: <MyConnection/> },
+      { path: "MyConnection", element: <MyConnection /> },
     ],
   },
 ]);

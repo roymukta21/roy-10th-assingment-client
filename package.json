@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
     "@tailwindcss/vite": "^4.1.17",
+    "aos": "^2.3.4",
     "firebase": "^12.5.0",
     "lucide-react": "^0.553.0",
     "react": "^19.1.1",

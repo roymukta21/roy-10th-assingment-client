@@ -8,7 +8,7 @@ export default function TopStudyPartners() {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch("https://study-mate-server-blue.vercel.app/partners")
+    fetch("http://localhost:5000/partners")
       .then((res) => res.json())
       .then((data) => {
         const sorted = data.sort((a, b) => b.rating - a.rating).slice(0, 3);
@@ -30,7 +30,7 @@ export default function TopStudyPartners() {
     ⭐ Top Study Partners
   </h2>
 
-  <div className="grid md:grid-cols-3 sm:grid-cols-3 gap-6 bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+  <div className="grid md:grid-cols-3 sm:grid-cols-3 gap-6 bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 max-w">
     {partners.map((p) => (
       <div
         key={p._id}
